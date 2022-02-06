@@ -3,7 +3,7 @@ class Dollar{
     Dollar(int amount){
         this.amount = amount;
     }
-    void times(int multiplicaion){
-        amount *= multiplicaion;
+    Dollar times(int multiplicaion){
+        return new Dollar(amount * multiplicaion);
     }
 }
