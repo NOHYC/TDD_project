@@ -9,4 +9,7 @@ TODO
 - amount를 private으로 만들기
 - ~~Dollar 부작용~~
 - Money 반올림
-
+- ~~equals()~~
+- hashCode()
+- Equal null 
+- Equal object
