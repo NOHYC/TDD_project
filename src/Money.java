@@ -1,13 +1,34 @@
-class Dollar{
-    private int amount;
+abstract class Money{
+    protected int amount;
+    abstract Money times(int multiplicaion);
+    static Money dollar(int amount){
+        return new Dollar(amount);
+    }
+    static Money franc(int amount){
+        return new Franc(amount);
+    }
+    public boolean equals(Object object){
+        Money money = (Money) object;
+        return amount == money.amount && getClass().equals(money.getClass());
+    }
+}
+
+
+class Dollar extends Money{
     Dollar(int amount){
         this.amount = amount;
     }
-    Dollar times(int multiplicaion){
+    Money times(int multiplicaion){
         return new Dollar(amount * multiplicaion);
     }
-    public boolean equals(Object object){
-        Dollar dollar = (Dollar) object;
-        return amount == dollar.amount;
+}
+
+class Franc extends Money{
+    Franc(int amount){
+        this.amount = amount;
     }
+    Money times(int multiplicaion){
+        return new Franc(amount * multiplicaion);
+    }
+
 }
