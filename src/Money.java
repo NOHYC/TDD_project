@@ -4,11 +4,11 @@ abstract class Money {
     abstract Money times(int multiplicaion);
 
     static Money dollar(int amount) {
-        return new Dollar(amount);
+        return new Dollar(amount, "USD");
     }
 
     static Money franc(int amount) {
-        return new Franc(amount);
+        return new Franc(amount, "CHF");
     }
 
     public boolean equals(Object object) {
@@ -22,13 +22,13 @@ abstract class Money {
 
 
 class Dollar extends Money {
-    Dollar(int amount) {
+    Dollar(int amount, String currency) {
         this.amount = amount;
-        currency = "USD";
+        this.currency = currency;
     }
 
     Money times(int multiplicaion) {
-        return new Dollar(amount * multiplicaion);
+        return  Money.dollar(amount * multiplicaion);
     }
     String currency(){
         return currency;
@@ -36,13 +36,13 @@ class Dollar extends Money {
 }
 
 class Franc extends Money {
-    Franc(int amount) {
+    Franc(int amount, String currency) {
         this.amount = amount;
-        currency = "CHF";
+        this.currency = currency;
     }
 
     Money times(int multiplicaion) {
-        return new Franc(amount * multiplicaion);
+        return  Money.franc(amount * multiplicaion);
     }
     String currency(){
         return currency;
