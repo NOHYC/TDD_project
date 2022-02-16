@@ -2,7 +2,7 @@ abstract class Money {
     protected int amount;
 
     abstract Money times(int multiplicaion);
-
+    abstract String currency();
     static Money dollar(int amount) {
         return new Dollar(amount);
     }
@@ -26,6 +26,9 @@ class Dollar extends Money {
     Money times(int multiplicaion) {
         return new Dollar(amount * multiplicaion);
     }
+    String currency(){
+        return "USD";
+    }
 }
 
 class Franc extends Money {
@@ -35,5 +38,8 @@ class Franc extends Money {
 
     Money times(int multiplicaion) {
         return new Franc(amount * multiplicaion);
+    }
+    String currency(){
+        return "CHF";
     }
 }
