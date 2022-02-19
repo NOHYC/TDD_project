@@ -1,6 +1,10 @@
 abstract class Money {
     protected int amount;
     protected String currency;
+    Money(int amount, String currency){
+        this.amount = amount;
+        this.currency = currency;
+    }
     abstract Money times(int multiplicaion);
 
     static Money dollar(int amount) {
@@ -23,8 +27,7 @@ abstract class Money {
 
 class Dollar extends Money {
     Dollar(int amount, String currency) {
-        this.amount = amount;
-        this.currency = currency;
+        super(amount, currency);
     }
 
     Money times(int multiplicaion) {
@@ -37,8 +40,7 @@ class Dollar extends Money {
 
 class Franc extends Money {
     Franc(int amount, String currency) {
-        this.amount = amount;
-        this.currency = currency;
+        super(amount, currency);
     }
 
     Money times(int multiplicaion) {
