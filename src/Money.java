@@ -1,6 +1,7 @@
 interface Expression {
     Expression plus(Money addend);
 }
+
 class Money implements Expression {
     protected int amount;
     protected String currency;
@@ -30,12 +31,30 @@ class Money implements Expression {
         return new Money(amount * multiplication, currency);
     }
     public Expression plus(Money addend){
-        return new Money(amount + addend.amount, currency);
+        return new Sum(this, addend);
     }
+
 }
-class Bank{
-    Money reduce(Expression source, String to){
+class Bank {
+    Money reduce(Expression source, String to)
+    {
         return Money.dollar(10);
     }
 }
+
+class Sum implements Expression{
+    Money augend;
+    Money addend;
+
+    Sum(Money augend, Money addend) {
+        this.augend = augend;
+        this.addend = addend;
+    }
+
+    @Override
+    public Expression plus(Money addend) {
+        return null;
+    }
+}
+
 
