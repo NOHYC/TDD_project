@@ -4,11 +4,6 @@ skinparam classAttributeIconSize 0
 /' 10장
 '/
 class Money
-class Franc
-class Dollar
-
-Money <|--- Franc
-Money <|--- Dollar
 
 class Money{
  #currency : String
@@ -21,12 +16,6 @@ class Money{
  +toString() : String
  +times(multiplication : int) : Money
 }
-class Dollar{
- +Dollar(amount : int, currency : String)
-}
-class Franc{
- +Franc(amount : int, currency : String)
 
-}
 
 @enduml
