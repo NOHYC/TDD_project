@@ -1,9 +1,9 @@
 @startuml
 'https://plantuml.com/class-diagram
 skinparam classAttributeIconSize 0
-/' 9장
+/' 10장
 '/
-abstract class Money
+class Money
 class Franc
 class Dollar
 
@@ -14,19 +14,19 @@ class Money{
  #currency : String
  #multiplication : int
  +Money(amount : int, currency : String)
- #times(multiplication : int) : {abstract} Money
  +dollar(amount : int) : {static} Money
  +franc(amount : int) : {static} Money
  +eqals(objects : Object) : boolean
  +currency() : String
+ +toString() : String
+ +times(multiplication : int) : Money
 }
 class Dollar{
  +Dollar(amount : int, currency : String)
- +times(multiplication : int) : Money
 }
 class Franc{
  +Franc(amount : int, currency : String)
- +times(multiplication : int) : Money
+
 }
 
 @enduml
