@@ -1,4 +1,7 @@
-class Money {
+interface Expression {
+    Expression plus(Money addend);
+}
+class Money implements Expression {
     protected int amount;
     protected String currency;
 
@@ -26,4 +29,13 @@ class Money {
     Money times(int multiplication) {
         return new Money(amount * multiplication, currency);
     }
+    public Expression plus(Money addend){
+        return new Money(amount + addend.amount, currency);
+    }
 }
+class Bank{
+    Money reduce(Expression source, String to){
+        return Money.dollar(10);
+    }
+}
+

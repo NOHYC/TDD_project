@@ -1,9 +1,14 @@
 @startuml
 'https://plantuml.com/class-diagram
 skinparam classAttributeIconSize 0
-/' 10장
+/' 12장
 '/
 class Money
+interface Expression
+class Bank
+
+Expression <|.. Money
+Money <.. Bank
 
 class Money{
  #currency : String
@@ -15,7 +20,13 @@ class Money{
  +currency() : String
  +toString() : String
  +times(multiplication : int) : Money
+ +plus(addend : Money) : Expression
 }
-
+interface Expression{
+ +plus(added : Money : Expression
+}
+class Bank{
+ +reduce(source : Expression, to : String) : Money
+}
 
 @enduml
