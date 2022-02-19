@@ -1,16 +1,16 @@
 abstract class Money {
     protected int amount;
     protected String currency;
+
     Money(int amount, String currency){
         this.amount = amount;
         this.currency = currency;
     }
-    abstract Money times(int multiplicaion);
+    //abstract Money times(int multiplication);
 
     static Money dollar(int amount) {
         return new Dollar(amount, "USD");
     }
-
     static Money franc(int amount) {
         return new Franc(amount, "CHF");
     }
@@ -22,6 +22,12 @@ abstract class Money {
     String currency(){
         return currency;
     }
+    Money times(int amount){
+        return null;
+    }
+    public String toString(){
+        return amount + " " + currency;
+    }
 }
 
 
@@ -30,11 +36,8 @@ class Dollar extends Money {
         super(amount, currency);
     }
 
-    Money times(int multiplicaion) {
-        return  Money.dollar(amount * multiplicaion);
-    }
-    String currency(){
-        return currency;
+    Money times(int multiplication) {
+        return new Dollar(amount * multiplication, currency);
     }
 }
 
@@ -43,10 +46,8 @@ class Franc extends Money {
         super(amount, currency);
     }
 
-    Money times(int multiplicaion) {
-        return  Money.franc(amount * multiplicaion);
+    Money times(int multiplication) {
+        return new Franc(amount * multiplication, currency);
     }
-    String currency(){
-        return currency;
-    }
+
 }

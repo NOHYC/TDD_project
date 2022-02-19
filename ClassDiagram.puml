@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+/' 9장
+'/
+abstract class Money
+class Franc
+class Dollar
+
+Money <|--- Franc
+Money <|--- Dollar
+
+class Money{
+ #currency : String
+ #multiplication : int
+ +Money(amount : int, currency : String)
+ #times(multiplication : int) : {abstract} Money
+ +dollar(amount : int) : {static} Money
+ +franc(amount : int) : {static} Money
+ +eqals(objects : Object) : boolean
+ +currency() : String
+}
+class Dollar{
+ +Dollar(amount : int, currency : String)
+ +times(multiplication : int) : Money
+}
+class Franc{
+ +Franc(amount : int, currency : String)
+ +times(multiplication : int) : Money
+}
+
+@enduml
