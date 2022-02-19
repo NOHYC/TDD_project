@@ -20,3 +20,4 @@ TODO
 - ~~Franc와 Dollar 비교하기~~
 - ~~통화?~~ 
 - testFrancMultiplication을 지워야할까?
+- $5 + $5 = $10
