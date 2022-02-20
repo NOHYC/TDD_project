@@ -34,5 +34,6 @@ class Sum{
  +augend : Money
  +addend : Money
  +Sum(augend : Money, addend : Money)
+ +reduce(to : String) : Money
 }
 @enduml

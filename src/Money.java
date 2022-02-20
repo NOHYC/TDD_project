@@ -39,8 +39,7 @@ class Bank {
     Money reduce(Expression source, String to)
     {
         Sum sum = (Sum) source;
-        int amount = sum.addend.amount + sum.augend.amount;
-        return new Money(amount, to);
+        return sum.reduce(to);
     }
 }
 
@@ -51,6 +50,10 @@ class Sum implements Expression{
     Sum(Money augend, Money addend) {
         this.augend = augend;
         this.addend = addend;
+    }
+    public Money reduce(String to){
+        int amount = addend.amount + augend.amount;
+        return new Money(amount, to);
     }
 
     @Override
