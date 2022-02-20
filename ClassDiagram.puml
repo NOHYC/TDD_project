@@ -1,14 +1,16 @@
 @startuml
 'https://plantuml.com/class-diagram
 skinparam classAttributeIconSize 0
-/' 12장
+/' 13장 : 더하기 기능 (추가매개변수)
 '/
 class Money
 interface Expression
 class Bank
+class Sum
 
 Expression <|.. Money
 Money <.. Bank
+Expression <|.. Sum
 
 class Money{
  #currency : String
@@ -21,12 +23,19 @@ class Money{
  +toString() : String
  +times(multiplication : int) : Money
  +plus(addend : Money) : Expression
+ +reduce(to : String) : Money
 }
 interface Expression{
- +plus(added : Money : Expression
+ +plus(added : Money) Expression
+ +reduce(to : String) : Money
 }
 class Bank{
  +reduce(source : Expression, to : String) : Money
 }
-
+class Sum{
+ +augend : Money
+ +addend : Money
+ +Sum(augend : Money, addend : Money)
+ +reduce(to : String) : Money
+}
 @enduml
