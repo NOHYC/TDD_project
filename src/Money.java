@@ -23,10 +23,10 @@ class Money implements Expression {
     public String toString(){
         return amount + " " + currency;
     }
-    Money times(int multiplication) {
+    Expression times(int multiplication) {
         return new Money(amount * multiplication, currency);
     }
-    public Expression plus(Money addend){
+    public Expression plus(Expression addend){
         return new Sum(this, addend);
     }
     public Money reduce(Bank bank, String to) {
