@@ -28,6 +28,7 @@ class Money{
 interface Expression{
  +plus(added : Expression) Expression
  +reduce(bank : Bank, to : String) : Money
+ +times(multiplication : int) : Expression
 }
 class Bank{
  -rates : Hashable
@@ -41,6 +42,7 @@ class Sum{
  +Sum(augend : Expression, addend : Expression)
  +reduce(bank : Bank, to : String) : Money
  +plus(added : Expression) : Expression
+ +times(multiplication : int) : Expression
 }
 class Pair {
  -from : String

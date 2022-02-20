@@ -23,7 +23,7 @@ class Money implements Expression {
     public String toString(){
         return amount + " " + currency;
     }
-    Expression times(int multiplication) {
+    public Expression times(int multiplication) {
         return new Money(amount * multiplication, currency);
     }
     public Expression plus(Expression addend){
