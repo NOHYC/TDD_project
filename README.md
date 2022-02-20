@@ -21,3 +21,5 @@ TODO
 - ~~통화?~~ 
 - testFrancMultiplication을 지워야할까?
 - $5 + $5 = $10
+- $5 + $5 에서 Money 반환하기
+- Bank.reduce(Money)
