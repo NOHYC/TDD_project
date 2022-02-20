@@ -1,7 +1,7 @@
 @startuml
 'https://plantuml.com/class-diagram
 skinparam classAttributeIconSize 0
-/' 14장 : 환율 적용(환율 매핑 해시테이블)
+/' 15장 : 서로 다른 통화 더하기(Expression)
 '/
 class Money
 interface Expression
