@@ -1,17 +1,17 @@
 @startuml
 'https://plantuml.com/class-diagram
 skinparam classAttributeIconSize 0
-/' 13장 : 더하기 기능 (추가매개변수)
+/' 14장 : 환율 적용(환율 매핑 해시테이블)
 '/
 class Money
 interface Expression
 class Bank
 class Sum
-
+class Pair
 Expression <|.. Money
 Money <.. Bank
 Expression <|.. Sum
-
+Bank <-- Pair
 class Money{
  #currency : String
  #multiplication : int
@@ -23,19 +23,29 @@ class Money{
  +toString() : String
  +times(multiplication : int) : Money
  +plus(addend : Money) : Expression
- +reduce(to : String) : Money
+ +reduce(bank : Bank, to : String) : Money
 }
 interface Expression{
  +plus(added : Money) Expression
- +reduce(to : String) : Money
+ +reduce(bank : Bank, to : String) : Money
 }
 class Bank{
+ -rates : Hashable
  +reduce(source : Expression, to : String) : Money
+ +rate(from : String, to : String) : int
+ +addRate(from : String, to : String, rate : int) : void
 }
 class Sum{
  +augend : Money
  +addend : Money
  +Sum(augend : Money, addend : Money)
- +reduce(to : String) : Money
+ +reduce(bank : Bank, to : String) : Money
+}
+class Pair {
+ -from : String
+ -to : String
+  +Pair(from : String, to : String)
+  +equals(Object object) : boolean
+  +hashCode() : int
 }
 @enduml
