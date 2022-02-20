@@ -1,5 +1,6 @@
 interface Expression {
     Expression plus(Money addend);
+    Money reduce(String to);
 }
 
 class Money implements Expression {
@@ -33,13 +34,14 @@ class Money implements Expression {
     public Expression plus(Money addend){
         return new Sum(this, addend);
     }
-
+    public Money reduce(String to) {
+        return this;
+    }
 }
 class Bank {
     Money reduce(Expression source, String to)
     {
-        Sum sum = (Sum) source;
-        return sum.reduce(to);
+        return source.reduce(to);
     }
 }
 
