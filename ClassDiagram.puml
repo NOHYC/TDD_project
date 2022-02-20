@@ -1,7 +1,7 @@
 @startuml
 'https://plantuml.com/class-diagram
 skinparam classAttributeIconSize 0
-/' 15장 : 서로 다른 통화 더하기(Expression)
+/' 15장 : 서로 다른 통화 더하기(Expression->Money)
 '/
 class Money
 interface Expression
@@ -21,12 +21,12 @@ class Money{
  +eqals(objects : Object) : boolean
  +currency() : String
  +toString() : String
- +times(multiplication : int) : Money
- +plus(addend : Money) : Expression
+ +times(multiplication : int) : Expression
+ +plus(addend : Expression) : Expression
  +reduce(bank : Bank, to : String) : Money
 }
 interface Expression{
- +plus(added : Money) Expression
+ +plus(added : Expression) Expression
  +reduce(bank : Bank, to : String) : Money
 }
 class Bank{
@@ -36,10 +36,11 @@ class Bank{
  +addRate(from : String, to : String, rate : int) : void
 }
 class Sum{
- +augend : Money
- +addend : Money
- +Sum(augend : Money, addend : Money)
+ +augend : Expression
+ +addend : Expression
+ +Sum(augend : Expression, addend : Expression)
  +reduce(bank : Bank, to : String) : Money
+ +plus(added : Expression) : Expression
 }
 class Pair {
  -from : String

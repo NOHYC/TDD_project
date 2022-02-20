@@ -1,8 +1,8 @@
 class Sum implements Expression {
-    Money augend;
-    Money addend;
+    Expression augend;
+    Expression addend;
 
-    Sum(Money augend, Money addend) {
+    Sum(Expression augend, Expression addend) {
         this.augend = augend;
         this.addend = addend;
     }
@@ -13,7 +13,7 @@ class Sum implements Expression {
     }
 
     @Override
-    public Expression plus(Money addend) {
+    public Expression plus(Expression addend) {
         return null;
     }
 }
